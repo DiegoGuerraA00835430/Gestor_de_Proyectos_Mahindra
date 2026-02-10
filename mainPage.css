@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sidebar {
+  margin: 0px;
+  padding: 0px;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #acabab;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+div.grafica {
+    padding: 2rem;
+    margin-bottom: 1rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
