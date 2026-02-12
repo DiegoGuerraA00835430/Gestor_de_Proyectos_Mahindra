@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+div {
+    padding: 2rem;
+    margin-bottom: 1rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+a.button {
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
