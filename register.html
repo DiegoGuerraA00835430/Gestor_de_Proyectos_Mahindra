@@ -3,19 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>Register</title>
     <link rel="stylesheet" href="register.css"> 
 </head>
 <body>
-    <div>
-        <h1>Log In</h1>
+    
+    
+    
+    <form id ="registerForm">
+        <h1>Register</h1>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <br><br>
-        <a href="login.html" class="button">Register</a>
-    </div>
+        <button type="submit">Register</button>
+        <a href="login.html" class="button">return</a>
+    </form>
+
+    <p id="message"></p>
+
+<script>
+
+    async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+      .map(b => b.toString(16).padStart(2, "0"))
+      .join("");
+
+    return hashHex;
+    }
+
+    const form = document.getElementById("registerForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) =>{
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const alreadyExists = users.some(user => user.username === username);
+
+        if(alreadyExists){
+            message.textContent = "Username Already Exists";
+            return;
+        }
+
+        const passwordHash = await hashPassword(password);
+
+        users.push({
+            username: username,
+            passwordHash: passwordHash,
+            createdAt: new Date().toISOString()
+        });
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        message.textContent = "User Registered Succesfully";
+        form.reset();
+        
+        setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+
+    });
+</script>
 </body>
-</html>
+</html> 

@@ -1,22 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link rel="stylesheet" href="login.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div>
-        <h1>Log In</h1>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <a href="mainPage.html" class="button">Log In</a>
-        <a href="register.html" class="button">Register</a>
-    </div>
+  <div>
+    
+    <form id="loginForm">
+    <h1>Log In</h1>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+
+      <button type="submit" class="button">Log In</button>
+      <a href="register.html" class="button">Register</a>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    async function hashPassword(password) {
+      const data = new TextEncoder().encode(password);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+    }
+
+    const form = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      message.textContent = "";
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+      const user = users.find(u =>
+        (u.username || "").toLowerCase() === username.toLowerCase()
+      );
+
+      if (!user) {
+        message.textContent = "User not found.";
+        return;
+      }
+
+      const passwordHash = await hashPassword(password);
+
+      if (passwordHash !== user.passwordHash) {
+        message.textContent = "Incorrect password.";
+        return;
+      }
+
+      window.location.href = "mainPage.html";
+    });
+  </script>
 </body>
 </html>

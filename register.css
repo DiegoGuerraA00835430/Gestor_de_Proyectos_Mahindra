@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-div {
+form {
     padding: 2rem;
     margin-bottom: 1rem;
     background-color: rgb(255, 255, 255);
@@ -19,6 +19,15 @@ div {
 label {
     display: block;
     margin-bottom: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
 }
 
 a.button {
