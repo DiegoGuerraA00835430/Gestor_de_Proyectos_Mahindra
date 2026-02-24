@@ -8,15 +8,7 @@
 </head>
 <body>
 
-        <div class = "sidebar">
-            <ul>
-                <a style="font-weight: bold; font-size: large;">Dashboard</a>
-                <a href="mainPage.html">Home</a>
-                <a class="active" href="profilepage.html">Profile</a>
-                <a href="projectPage.html">Project</a>
-                <a href="#">Teams</a>
-            </ul>
-        </div>
+        <app-sidebar active="profile"></app-sidebar>
 
         <div class = "content">
             <h1>Profile</h1>
@@ -33,10 +25,13 @@
                 <br><br>
                 <a href="login.html" class="button">Log Out</a>
             </section>    
-            <footer class="footer">
-                <p>Project Management Dashboard &copy; 2024</p>
-            </footer>
+            
+            <app-footer></app-footer>
         </div>
+
+        <script src="footer.js" defer></script>
+        <script src="sidebar.js" defer></script>
+
   </body>          
         
 </html>
