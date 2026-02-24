@@ -50,7 +50,7 @@
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value;
 
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const users = JSON.parse(sessionStorage.getItem("users")) || [];
 
         const alreadyExists = users.some(user => user.username === username);
 
@@ -67,7 +67,7 @@
             createdAt: new Date().toISOString()
         });
 
-        localStorage.setItem("users", JSON.stringify(users));
+        sessionStorage.setItem("users", JSON.stringify(users));
 
         message.textContent = "User Registered Succesfully";
         form.reset();

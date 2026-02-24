@@ -45,7 +45,7 @@
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value;
 
-      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      const users = JSON.parse(sessionStorage.getItem("users") || "[]");
 
       const user = users.find(u =>
         (u.username || "").toLowerCase() === username.toLowerCase()
@@ -62,8 +62,10 @@
         message.textContent = "Incorrect password.";
         return;
       }
-
+      
+      sessionStorage.setItem("auth", "true");
       window.location.href = "mainPage.html";
+      
     });
   </script>
 </body>
