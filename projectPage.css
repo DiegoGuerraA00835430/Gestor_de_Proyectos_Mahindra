@@ -7,32 +7,6 @@ body {
     display: flex;
 }
 
-.sidebar ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.sidebar {
-  width: 16rem;
-  background-color: #f1f1f1;
-  position: static;
-  height: 100%;
-  overflow: auto;
-}
-
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 1rem;
-  text-decoration: none;
-}
-
-.sidebar a.active {
-  background-color: #acabab;
-  color: white;
-}
-
 div.content {
   flex: 1;
   padding: 1rem;
@@ -54,7 +28,3 @@ div.timeline {
     gap: 1rem;
 }
 
-.footer {
-    text-align: center;
-    margin-top: 2rem;
-}
