@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script defer>
+        if (sessionStorage.getItem("auth") !== "true") {
+            window.location.replace("login.html");
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="pokeFight.css">
+</head>
+<body>
+
+        <app-sidebar active="pokeFight"></app-sidebar>
+
+        <div class = "content">
+
+            <h1>Pokédex</h1>
+
+                <div class="pokedex-toolbar">
+                    <input id="pokeSearch" type="text" placeholder="Search Pokémon (e.g. pikachu, charizard)..." />
+                    <button id="clearSearch" type="button">Clear</button>
+                </div>
+
+                <div class="pokedex-meta">
+                    <span id="resultCount"></span>
+                    <div class="pager">
+                    <button id="prevPage" type="button">Prev</button>
+                    <span id="pageInfo"></span>
+                    <button id="nextPage" type="button">Next</button>
+                    </div>
+                </div>
+
+            <div id="pokeGrid" class="pokedex-grid"></div>
+            
+
+            <app-footer></app-footer>
+
+
+
+        </div>
+
+        <script src="footer.js" defer></script>
+        <script src="sidebar.js" defer></script>
+        <script src="app.js" defer></script>
+        
+</body>       
+        
+</html>

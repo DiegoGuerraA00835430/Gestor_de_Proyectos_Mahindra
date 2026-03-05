@@ -16,7 +16,7 @@ class AppSidebar extends HTMLElement {
           <a href="mainPage.html" class="${active === "home" ? "active" : ""}">Home</a>
           <a href="profilePage.html" class="${active === "profile" ? "active" : ""}">Profile</a>
           <a href="projectPage.html" class="${active === "project" ? "active" : ""}">Project</a>
-          <a href="#">Teams</a>
+          <a href="pokeFight.html" class="${active === "pokeFight" ? "active" : ""}">Poke Battle</a>
         </ul>
       </div>
     `;
