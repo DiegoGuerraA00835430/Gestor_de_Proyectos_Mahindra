@@ -122,7 +122,10 @@ async function initPokeFightPage() {
     const q = query.trim().toLowerCase();
     if (!q) return allList;
 
-    return allList.filter((p) => p.name.includes(q));
+    return allList.filter((p) =>  {
+        const idpoke = p.url.split("/").filter(Boolean).pop();
+        return p.name.includes(q) || idpoke.includes(q);
+    });
   }
 
   async function render() {
