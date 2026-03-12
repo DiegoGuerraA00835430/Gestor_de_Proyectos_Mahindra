@@ -1,8 +1,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   display: flex;
 }
@@ -11,8 +11,149 @@ div.content {
   flex: 1;
   padding: 1rem;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
+/* =========================
+   Battle section
+========================= */
+.battle {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.escoger-pokemon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pokemonEscogido {
+  min-height: 140px;
+  border: 2px dashed #bbb;
+  border-radius: 1rem;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.pokemonEscogido.selected {
+  border-style: solid;
+  background: #f0f0f0;
+}
+
+.pokemonEscogido img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.controles input,
+.controles button {
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+}
+
+.controles button {
+  border: none;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+}
+
+.controles button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.Arena {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.pokemon1,
+.pokemon2,
+.battle-center {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.pokemon1 img,
+.pokemon2 img {
+  display: block;
+  margin: 0 auto 1rem auto;
+  max-width: 140px;
+  max-height: 140px;
+}
+
+.health-bar {
+  width: 100%;
+  height: 18px;
+  background: #ddd;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.health-fill {
+  width: 100%;
+  height: 100%;
+  background: #28a745;
+  transition: width 0.3s ease;
+}
+
+.move-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.move-chip {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.battle-log {
+  min-height: 220px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.log-line {
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+   Toolbar / Pokedex
+========================= */
 .pokedex-toolbar {
   display: flex;
   gap: 0.5rem;
@@ -41,6 +182,7 @@ div.content {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  gap: 1rem;
 }
 
 .pager {
@@ -63,6 +205,9 @@ div.content {
   cursor: not-allowed;
 }
 
+/* =========================
+   Cards
+========================= */
 .pokedex-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -70,16 +215,43 @@ div.content {
   margin-bottom: 2rem;
 }
 
+.placeholder-ball{
+  width:60px;
+  opacity:0.6;
+  margin-bottom:5px;
+}
+
+.battle-placeholder{
+  width:120px;
+  display:block;
+  margin:10px auto;
+  opacity:0.6;
+}
+
+.move-chip-active {
+  border: 2px solid #ffcc00;
+  background: #fff3b0;
+  transform: scale(1.05);
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.45);
+}
+
+.move-chip {
+  transition: all 0.2s ease;
+}
+
 .poke-card {
   background: white;
   border: 1px solid #ddd;
   border-radius: 1rem;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .poke-card-top {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .poke-id {
@@ -124,6 +296,41 @@ div.content {
   grid-template-columns: 1fr 1fr;
   gap: 0.25rem 1rem;
   color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.two-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.select-btn,
+.remove-btn {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: none;
+  border-radius: 0.7rem;
+  color: white;
+  cursor: pointer;
+}
+
+.select-btn {
+  background: #28a745;
+}
+
+.remove-btn {
+  background: #dc3545;
+}
+
+.select-btn:disabled,
+.remove-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .loading,
@@ -132,4 +339,23 @@ div.content {
   background: white;
   border-radius: 0.75rem;
   border: 1px solid #ddd;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 1000px) {
+  .Arena {
+    grid-template-columns: 1fr;
+  }
+
+  .escoger-pokemon {
+    grid-template-columns: 1fr;
+  }
+
+  .pokedex-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

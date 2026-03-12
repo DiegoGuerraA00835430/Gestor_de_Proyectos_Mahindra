@@ -19,6 +19,55 @@
 
             <h1>Pokédex</h1>
 
+                <section class="battle">
+                    <h2>Simulador de Battalas</h2>
+
+                    <div class="escoger-pokemon">
+                        <div class="pokemonEscogido" id="pokemon1">
+                            <img class="placeholder-ball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg">
+                            <p>Escoge Pokémon 1</p>
+                        </div>
+
+                        <div class="pokemonEscogido" id="pokemon2">
+                            <img class="placeholder-ball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg">
+                            <p>Escoge Pokémon 2</p>
+                        </div>
+                    </div>
+
+                    <div class="controles">
+                        <label for="limiteTurnos">Limite de Turnos:</label>
+                        <input id="limiteTurnos" type="number" min="0" value="20">
+                        <button id="empezarPelea" type="button" disabled>Comenzar Pelea</button>
+                    </div>
+
+                    <div class="Arena" id="Arena" hidden>
+                        <div class="pokemon1">
+                            <h3 id="pokemon1Nombre">Pokémon 1</h3>
+                            <img id="fighter1Sprite" class="battle-placeholder" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" alt="Pokémon 1">
+                            <p id="pokemon1Hp">HP: -- / --</p>
+                            <div class ="health-bar">
+                                <div id="pokemon1HpBar" class="health-fill"></div>
+                            </div>
+                            <div id="movesPokemon1" class="move-list"></div>
+                        </div>
+
+                        <div class="battle-center">
+                            <p id="turnCounter">Turn: 0</p>
+                            <div id="battleLog" class="battle-log"></div>
+                        </div>
+
+                        <div class="pokemon2">
+                            <h3 id="pokemon2Nombre">Pokémon 2</h3> 
+                            <img id="fighter2Sprite" class="battle-placeholder" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" alt="Pokémon 2">
+                            <p id="pokemon2Hp">HP: -- / --</p>
+                            <div class ="health-bar">
+                                <div id="pokemon2HpBar" class="health-fill"></div>
+                            </div>
+                            <div id="movesPokemon2" class="move-list"></div>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="pokedex-toolbar">
                     <input id="pokeSearch" type="text" placeholder="Search Pokémon (e.g. pikachu, charizard)..." />
                     <button id="clearSearch" type="button">Clear</button>
