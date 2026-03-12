@@ -481,9 +481,7 @@ async function runAutoBattle() {
   renderBattleSelection();
 }
 
-/* =========================
-   Cards
-========================= */
+// Tarjetas de busqueda pokemon
 function pokemonCardHtml(p) {
   const sprite = getPokemonSprite(p);
 
@@ -545,9 +543,7 @@ function pokemonCardHtml(p) {
   `;
 }
 
-/* =========================
-   Init page
-========================= */
+// Desplegar datos de pokemon en grid correcto.
 async function initPokeFightPage() {
   const grid = $("pokeGrid");
   const searchInput = $("pokeSearch");
